@@ -1,0 +1,34 @@
+<div class="pwa-container">
+  <header class="header">
+    <div class="badge" [class.online]="isOnline()" [class.offline]="!isOnline()">
+      <span class="dot"></span>
+      <span>{{ isOnline() ? 'En Línea (Online)' : 'Modo Sin Conexión (Offline)' }}</span>
+    </div>
+    <h1>Taller: PWA con Angular</h1>
+    <p class="subtitle">Aplicaciones Web Progresivas - Instructor: Jorge Luque Chambi</p>
+  </header>
+
+  <main class="main-card">
+    <div class="card data-card">
+      <h2>📡 Runtime Caching (Ejercicio 4)</h2>
+      <p class="desc">Dato obtenido dinámicamente desde <code>/data/frases.json</code>:</p>
+      <blockquote class="quote">
+        "{{ frase() }}"
+      </blockquote>
+      <p class="info-note">
+        ⚡ <em>Estrategia configurada:</em> <code>performance</code> (guarda en Cache Storage y responde instantáneamente incluso offline).
+      </p>
+    </div>
+
+    <div class="card steps-card">
+      <h3>🔍 Pasos de Verificación en DevTools (F12)</h3>
+      <ol>
+        <li>Ve a <strong>Application &gt; Service Workers</strong> y confirma que <code>ngsw-worker.js</code> esté en estado verde (<em>activated and is running</em>).</li>
+        <li>Ve a <strong>Application &gt; Cache Storage</strong> y observa <code>ngsw:/:db:datos-estaticos:cache</code> con <code>/data/frases.json</code>.</li>
+        <li>En la pestaña <strong>Network</strong>, activa el checkbox <strong>Offline</strong> y recarga (<code>Ctrl + F5</code>).</li>
+        <li>Comprueba que la app carga y la frase dice <code>(from ServiceWorker)</code> en la columna Size.</li>
+      </ol>
+    </div>
+  </main>
+</div>
+<router-outlet></router-outlet>
